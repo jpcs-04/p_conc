@@ -20,6 +20,7 @@ void *n_mult(void *arg)
 
     return (void *)c;
 }
+
 int main()
 {
 
@@ -56,12 +57,12 @@ int main()
     }
 
     printf("mul %d: %ld\n", 2, result[0]);
-   
+
     for (i = 1; i < 4; i++)
     {
         printf("mul %d: %ld\n", (i * 2) + 1, result[i]);
     }
-  
+
     printf("mul %d: %ld\n", 11, result[5]);
     exit(0);
 }
