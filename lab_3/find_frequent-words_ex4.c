@@ -69,20 +69,30 @@ void threads_init_join()
     sscanf(line, "%d", &n_threads);
 
     pthread_t threads_id[n_threads];
-   
+
     argthreads arg_threads[n_threads];
     for (i = 0; i < n_threads; i++)
     {
-        arg_threads[i].c_start = 'a' + (i * (26/n_threads)) ;
-        arg_threads[i].c_end = 'a' + ((i+1)*(26/n_threads)) - 1;
+        arg_threads[i].c_start = 'a' + (i * (26 / n_threads));
+        fprintf(stdout, "start:%c\n", arg_threads[i].c_start);
+        if (i < (n_threads - 1))
+        {
+            arg_threads[i].c_end = 'a' + ((i + 1) * (26 / n_threads)) - 1;
+            fprintf(stdout, "end: %c\n", arg_threads[i].c_end);
+        }
+        else
+        {
+            arg_threads[i].c_end = 'z';
+            fprintf(stdout, "final:%c\n", arg_threads[i].c_end);
+        }
+
         pthread_create(&threads_id[i], NULL, find_unique_words_letters, &arg_threads[i]);
     }
-   
-    for(i = 0; i < n_threads; i++)
+
+    for (i = 0; i < n_threads; i++)
     {
-         pthread_join(threads_id[i], NULL);
+        pthread_join(threads_id[i], NULL);
     }
-   
 }
 
 void print_more_freq_words_letters()
