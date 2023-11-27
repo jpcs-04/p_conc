@@ -17,6 +17,7 @@ typedef struct argthreads
 {
     char c_start;
     char c_end;
+    
 } argthreads;
 
 void *find_unique_words_letters(void *arg)
