@@ -73,8 +73,8 @@ void threads_init_join()
     argthreads arg_threads[n_threads];
     for (i = 0; i < n_threads; i++)
     {
-        arg_threads[i].c_start = 'a' + (26/n_threads);
-        arg_threads[i].c_end = 'z' - (26/n_threads);
+        arg_threads[i].c_start = 'a';
+        arg_threads[i].c_end = 
         pthread_create(&threads_id[i], NULL, find_unique_words_letters, &arg_threads[i]);
     }
    
