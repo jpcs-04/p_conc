@@ -57,6 +57,7 @@ void *find_unique_words_letters(void *arg)
             }
         }
     }
+    
     return NULL;
 }
 
@@ -74,16 +75,16 @@ void threads_init_join()
     for (i = 0; i < n_threads; i++)
     {
         arg_threads[i].c_start = 'a' + (i * (26 / n_threads));
-        fprintf(stdout, "start:%c\n", arg_threads[i].c_start);
+        fprintf(stdout, "start: %c\n", arg_threads[i].c_start);
         if (i < (n_threads - 1))
         {
             arg_threads[i].c_end = 'a' + ((i + 1) * (26 / n_threads)) - 1;
-            fprintf(stdout, "end: %c\n", arg_threads[i].c_end);
+            fprintf(stdout, "end:   %c\n", arg_threads[i].c_end);
         }
         else
         {
             arg_threads[i].c_end = 'z';
-            fprintf(stdout, "final:%c\n", arg_threads[i].c_end);
+            fprintf(stdout, "final: %c\n", arg_threads[i].c_end);
         }
 
         pthread_create(&threads_id[i], NULL, find_unique_words_letters, &arg_threads[i]);
